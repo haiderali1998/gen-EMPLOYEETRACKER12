@@ -19,8 +19,10 @@
   "homepage": "https://github.com/haiderali1998/gen-EMPLOYEETRACKER12#readme",
   "dependencies": {
     "asciiart-logo": "^0.2.7",
+    "chalk": "^5.0.1",
     "console.table": "^0.10.0",
     "inquirer": "^8.2.4",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "validator": "^13.7.0"
   }
 }
