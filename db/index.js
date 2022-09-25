@@ -10,7 +10,7 @@ class DB {
         return this.connection.promise().query("SELECT department.id, department.name FROM department");
     }
     viewRoles2(){
-        return this.connection.promise().query("SELECT department.id, department.name FROM department");
+        return this.connection.promise().query("SELECT role.id, role.title, role.salary, FROM role");
     }
     viewEmployees2(){
         return this.connection.promise().query("SELECT department.id, department.name FROM department");

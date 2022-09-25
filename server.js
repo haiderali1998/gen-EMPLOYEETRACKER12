@@ -66,16 +66,18 @@ function init() {
 }
 
 function viewDepartments(){
-  db.viewDepartments2().then(([rows])=>{let departments = rows})
-
-  console.log(departments)
-}
+    db.viewDepartments2().then(([rows])=>{
+   let departments = rows;
+   console.log(departments)
+   })
+   }
 
 function viewRoles(){
-  db.viewRoles2().then(([rows])=>{let roles = rows})
-
-  console.log(roles)
-}
+  db.viewRoles2().then(([rows])=>{
+    let roles = rows;
+    console.log(roles)
+    })
+    }
 
 function viewEmployees(){
     db.viewEmployees2().then(([rows])=>{let roles = rows})
