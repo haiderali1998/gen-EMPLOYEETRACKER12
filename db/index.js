@@ -3,7 +3,10 @@
 const connection = require("./connection");
 
 class DB {
-     viewDepartments2(){
+    constructor(connection) {
+        this.connection = connection;
+    }
+     viewDepartments2(employeeData){
         return this.connection.promise().query("SELECT department.id, department.name FROM department");
     }
     viewRoles2(){
@@ -29,4 +32,4 @@ class DB {
 
 
 
-module.exports = new DB
+module.exports = new DB(connection);
