@@ -77,6 +77,35 @@ function viewRoles(){
   console.log(roles)
 }
 
+function viewEmployees(){
+    db.viewEmployees2().then(([rows])=>{let roles = rows})
+  
+    console.log(roles)
+  }
+
+  function addDepartment(){
+    db.addDepartment2().then(([rows])=>{let roles = rows})
+  
+    console.log(roles)
+  }
+  function addRole(){
+    db.addRole2().then(([rows])=>{let roles = rows})
+  
+    console.log(roles)
+  }
+
+  function addEmployee(){
+    db.addEmployee2().then(([rows])=>{let roles = rows})
+  
+    console.log(roles)
+  }
+
+  function updateEmployee(){
+    db.updateEmployee2().then(([rows])=>{let roles = rows})
+  
+    console.log(roles)
+  }
+
 // Function for view deprtament
 
 // View all Departments
