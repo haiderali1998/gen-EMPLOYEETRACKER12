@@ -80,10 +80,11 @@ function viewRoles(){
     }
 
 function viewEmployees(){
-    db.viewEmployees2().then(([rows])=>{let roles = rows})
-  
-    console.log(roles)
-  }
+    db.viewEmployees2().then(([rows])=>{
+        let employee = rows;
+        console.log(employee)
+        })
+        }
 
   function addDepartment(){
     db.addDepartment2().then(([rows])=>{let roles = rows})
@@ -108,23 +109,6 @@ function viewEmployees(){
     console.log(roles)
   }
 
-// Function for view deprtament
-
-// View all Departments
-//View all departments
-// function viewDepartments()
-// {   
-//     connection.query(
-//         'SELECT * FROM department',
-//         function(err, results) {
-//             if (err) throw err;
-//             console.log("");
-//             console.log("--------------------------------");
-           
-//             console.log("");
-//             init();
-//         });
-// };
 
 
 
