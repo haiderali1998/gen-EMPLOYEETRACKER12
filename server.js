@@ -111,14 +111,30 @@ function addDepartment() {
 })
 }
 function addRole() {
-    inquirer.prompt({
-        name: "menu",
+    inquirer.prompt([{
+        name: "title",
         type: "input",
-        message: "Please input role name"
+        message: "Please input title"
         
-    }).then(res => {
+    },
+    {
+        name: "salary",
+        type: "input",
+        message: "Please input salary"
+        
+    },
+    {
+        name: "dID",
+        type: "input",
+        message: "Please input deparment id"
+        
+    },
 
-    db.addRole2(res.menu).then(([rows]) => { let roles = rows })
+]).then(res => {
+
+
+
+    db.addRole2(res).then(([rows]) => { let roles = rows })
 
     
 })
