@@ -19,10 +19,10 @@ class DB {
         return this.connection.promise().query(`INSERT INTO department (name) VALUES ("${inputDepartment}")`);
     }
     addRole2(inputRoles){
-        return this.connection.promise().query(`INSERT INTO role (title, salary, department_id) VALUES ("${inputRoles.title}"),("${inputRoles.salary}"),("${inputRoles.dID}")`);
+        return this.connection.promise().query(`INSERT INTO role (title, salary, department_id) VALUES ("${inputRoles.title}", ${inputRoles.salary}, ${inputRoles.dID})`);
     }
-    addEmployee2(){
-        return this.connection.promise().query("SELECT department.id, department.name FROM department");
+    addEmployee2(inputEmployee){
+        return this.connection.promise().query(`INSERT INTO role (first_name, last_name, role_id, manager_id) VALUES ("${inputEmployee.first}", ${inputEmployee.last}, ${inputEmployee.roleID}, ${inputEmployee.managerID})`);
     }
     updateEmployee2(){
         return this.connection.promise().query("SELECT department.id, department.name FROM department");

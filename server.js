@@ -142,6 +142,8 @@ function addRole() {
 
     ]).then(res => {
 
+        console.log(res)
+
 
 
         db.addRole2(res).then(([rows]) => { let roles = rows })
@@ -152,9 +154,56 @@ function addRole() {
 }
 
 function addEmployee() {
-    db.addEmployee2().then(([rows]) => { let roles = rows })
+    db.viewEmployees2().then(([rows]) => {
+        let employees = rows;
+        let choicesEmployees = employees.map(({id, name})=>({
+            name: name, value: id
+        }))
+     
+    inquirer.prompt([{
+        name: "first",
+        type: "input",
+        message: "Please input First Name"
 
-    console.log(roles)
+    },
+    {
+        name: "last",
+        type: "input",
+        message: "Please input Last Name"
+
+    },
+    {
+        name: "roleID",
+        type: "input",
+        message: "Please input Role ID"
+
+    },
+    {
+        name: "managerID",
+        type: "input",
+        message: "Please input Manager ID"
+
+    },
+    {
+        name: "dID",
+        type: "list",
+        message: "Please input deparment id",
+        choices: choicesEmployees
+
+    },
+    
+
+    ]).then(res => {
+
+        console.log(res)
+
+
+
+        db.addRole2(res).then(([rows]) => { let roles = rows })
+
+
+    })
+})
 }
 
 function updateEmployee() {
@@ -164,11 +213,9 @@ function updateEmployee() {
 }
 
 function quit() {
-    console.log("bye")
+    console.log("BYE!!!")
     process.exit()
 }
-
-
 
 
 init()
