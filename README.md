@@ -33,3 +33,7 @@ This project involved using sql and node, in order to create a database that ena
 ## GITHUB URL 
 
 https://github.com/haiderali1998/gen-EMPLOYEETRACKER12 
+
+## Video URL
+
+https://www.youtube.com/watch?v=os3A-Q-hEpw
