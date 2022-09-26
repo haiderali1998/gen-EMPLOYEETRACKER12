@@ -78,17 +78,23 @@ function viewDepartments() {
 }
 
 function viewRoles() {
-    db.viewRoles2().then(([rows]) => {
+    db.viewRoles2()
+    .then(([rows]) => {
         let roles = rows;
-        console.log(roles)
+        console.log("\n");
+        console.table(roles);
     })
+    .then(() => init());
 }
 
 function viewEmployees() {
-    db.viewEmployees2().then(([rows]) => {
-        let employee = rows;
-        console.log(employee)
+    db.viewEmployees2()
+    .then(([rows]) => {
+        let employees = rows;
+        console.log("\n");
+        console.table(employees);
     })
+    .then(() => init());
 }
 
 function addDepartment() {
