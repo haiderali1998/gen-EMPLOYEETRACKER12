@@ -1,8 +1,7 @@
 // requiring connection to make query
 const inquirer = require("inquirer");
 //const logo = require("asciirt-logo");
-const callTable = require("console.table");
-const connection = require("./db/connection");
+require("console.table");
 const db = require("./db")
 
 
@@ -24,7 +23,8 @@ function init() {
                 "Add a Department",
                 "Add a Role",
                 "Add an Employee",
-                "Update an Employee Role"]
+                "Update an Employee Role",
+                "quit"]
 
         }
     ]).then(res => {
@@ -52,6 +52,8 @@ function init() {
             case "Update an Employee Role":
                 updateEmployee();
                 break;
+            default:
+                quit();
 
 
         }
@@ -65,49 +67,52 @@ function init() {
 
 }
 
-function viewDepartments(){
-    db.viewDepartments2().then(([rows])=>{
-   let departments = rows;
-   console.log(departments)
-   })
-   }
+function viewDepartments() {
+    db.viewDepartments2()
+        .then(([rows]) => {
+            let departments = rows;
+            console.log("\n");
+            console.table(departments);
+        })
+        .then(() => init());
+}
 
-function viewRoles(){
-  db.viewRoles2().then(([rows])=>{
-    let roles = rows;
-    console.log(roles)
+function viewRoles() {
+    db.viewRoles2().then(([rows]) => {
+        let roles = rows;
+        console.log(roles)
     })
-    }
+}
 
-function viewEmployees(){
-    db.viewEmployees2().then(([rows])=>{
+function viewEmployees() {
+    db.viewEmployees2().then(([rows]) => {
         let employee = rows;
         console.log(employee)
-        })
-        }
+    })
+}
 
-  function addDepartment(){
-    db.addDepartment2().then(([rows])=>{let roles = rows})
-  
-    console.log(roles)
-  }
-  function addRole(){
-    db.addRole2().then(([rows])=>{let roles = rows})
-  
-    console.log(roles)
-  }
+function addDepartment() {
+    db.addDepartment2().then(([rows]) => { let roles = rows })
 
-  function addEmployee(){
-    db.addEmployee2().then(([rows])=>{let roles = rows})
-  
     console.log(roles)
-  }
+}
+function addRole() {
+    db.addRole2().then(([rows]) => { let roles = rows })
 
-  function updateEmployee(){
-    db.updateEmployee2().then(([rows])=>{let roles = rows})
-  
     console.log(roles)
-  }
+}
+
+function addEmployee() {
+    db.addEmployee2().then(([rows]) => { let roles = rows })
+
+    console.log(roles)
+}
+
+function updateEmployee() {
+    db.updateEmployee2().then(([rows]) => { let roles = rows })
+
+    console.log(roles)
+}
 
 
 
