@@ -18,8 +18,8 @@ class DB {
     addDepartment2(inputDepartment){
         return this.connection.promise().query(`INSERT INTO department (name) VALUES ("${inputDepartment}")`);
     }
-    addRole2(){
-        return this.connection.promise().query("SELECT department.id, department.name FROM department");
+    addRole2(inputRoles){
+        return this.connection.promise().query(`INSERT INTO role (title, salary, department_id) VALUES ("${inputRoles}")`);
     }
     addEmployee2(){
         return this.connection.promise().query("SELECT department.id, department.name FROM department");

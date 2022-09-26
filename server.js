@@ -111,9 +111,17 @@ function addDepartment() {
 })
 }
 function addRole() {
-    db.addRole2().then(([rows]) => { let roles = rows })
+    inquirer.prompt({
+        name: "menu",
+        type: "input",
+        message: "Please input role name"
+        
+    }).then(res => {
 
-    console.log(roles)
+    db.addRole2(res.menu).then(([rows]) => { let roles = rows })
+
+    
+})
 }
 
 function addEmployee() {
