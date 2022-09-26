@@ -92,9 +92,17 @@ function viewEmployees() {
 }
 
 function addDepartment() {
-    db.addDepartment2().then(([rows]) => { let roles = rows })
+    inquirer.prompt({
+        name: "menu",
+        type: "input",
+        message: "Please input department name"
+        
+    }).then(res => {
 
-    console.log(roles)
+    db.addDepartment2(res.menu).then(([rows]) => { let roles = rows })
+
+    
+})
 }
 function addRole() {
     db.addRole2().then(([rows]) => { let roles = rows })

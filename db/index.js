@@ -15,8 +15,8 @@ class DB {
     viewEmployees2(){
         return this.connection.promise().query("SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id FROM employee");
     }
-    addDepartment2(){
-        return this.connection.promise().query("SELECT department.id, department.name FROM department");
+    addDepartment2(inputDepartment){
+        return this.connection.promise().query(`INSERT INTO department (name) VALUES ("${inputDepartment}")`);
     }
     addRole2(){
         return this.connection.promise().query("SELECT department.id, department.name FROM department");
