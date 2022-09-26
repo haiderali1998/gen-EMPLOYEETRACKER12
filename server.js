@@ -217,9 +217,14 @@ function updateEmployee() {
             message: "Please input employee",
             choices: choicesEmployees 
     
-        },
-        )
-
+        }
+        ).then((res) => 
+        {
+            let choicesRoles = roles.map(({id, title })=>({
+            name: title, value: id
+        }))
+    })
+        
     console.log(roles)
     })
 }
