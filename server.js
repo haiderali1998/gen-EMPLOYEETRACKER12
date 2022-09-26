@@ -156,9 +156,10 @@ function addRole() {
 function addEmployee() {
     db.viewEmployees2().then(([rows]) => {
         let employees = rows;
-        let choicesEmployees = employees.map(({id, name})=>({
-            name: name, value: id
+        let choicesEmployees = employees.map(({id, first_name})=>({
+            name: first_name, value: id
         }))
+        
      
     inquirer.prompt([{
         name: "first",
@@ -172,25 +173,21 @@ function addEmployee() {
         message: "Please input Last Name"
 
     },
-    {
+     {
         name: "roleID",
         type: "input",
-        message: "Please input Role ID"
+        message: "Please input role ID",
+        
 
     },
     {
         name: "managerID",
-        type: "input",
-        message: "Please input Manager ID"
-
-    },
-    {
-        name: "dID",
         type: "list",
-        message: "Please input deparment id",
-        choices: choicesEmployees
+        message: "Please input Manager",
+        choices: choicesEmployees 
 
     },
+   
     
 
     ]).then(res => {
@@ -199,7 +196,7 @@ function addEmployee() {
 
 
 
-        db.addRole2(res).then(([rows]) => { let roles = rows })
+        db.addEmployee2(res).then(([rows]) => { let roles = rows })
 
 
     })
