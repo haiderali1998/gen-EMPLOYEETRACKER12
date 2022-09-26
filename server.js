@@ -29,7 +29,7 @@ function init() {
         }
     ]).then(res => {
         switch (res.menu)
-        // Change to match read me
+        // Switch statement that calls functions
         {
             case "View all Departments":
                 viewDepartments();
@@ -67,6 +67,8 @@ function init() {
 
 }
 
+// functions that are called from the switch statement
+
 function viewDepartments() {
     db.viewDepartments2()
         .then(([rows]) => {
@@ -79,22 +81,22 @@ function viewDepartments() {
 
 function viewRoles() {
     db.viewRoles2()
-    .then(([rows]) => {
-        let roles = rows;
-        console.log("\n");
-        console.table(roles);
-    })
-    .then(() => init());
+        .then(([rows]) => {
+            let roles = rows;
+            console.log("\n");
+            console.table(roles);
+        })
+        .then(() => init());
 }
 
 function viewEmployees() {
     db.viewEmployees2()
-    .then(([rows]) => {
-        let employees = rows;
-        console.log("\n");
-        console.table(employees);
-    })
-    .then(() => init());
+        .then(([rows]) => {
+            let employees = rows;
+            console.log("\n");
+            console.table(employees);
+        })
+        .then(() => init());
 }
 
 function addDepartment() {
@@ -102,41 +104,50 @@ function addDepartment() {
         name: "menu",
         type: "input",
         message: "Please input department name"
-        
+
     }).then(res => {
 
-    db.addDepartment2(res.menu).then(([rows]) => { let roles = rows })
+        db.addDepartment2(res.menu).then(([rows]) => { let roles = rows })
 
-    
-})
+
+    })
 }
 function addRole() {
+    db.viewDepartments2().then(([rows]) => {
+        let departments = rows;
+        let choicesDepartments = departments.map(({id, name})=>({
+            name: name, value: id
+        }))
+     
     inquirer.prompt([{
         name: "title",
         type: "input",
         message: "Please input title"
-        
+
     },
     {
         name: "salary",
         type: "input",
         message: "Please input salary"
-        
+
     },
     {
         name: "dID",
-        type: "input",
-        message: "Please input deparment id"
-        
+        type: "list",
+        message: "Please input deparment id",
+        choices: choicesDepartments
+
     },
-
-]).then(res => {
-
-
-
-    db.addRole2(res).then(([rows]) => { let roles = rows })
-
     
+
+    ]).then(res => {
+
+
+
+        db.addRole2(res).then(([rows]) => { let roles = rows })
+
+
+    })
 })
 }
 
@@ -150,6 +161,11 @@ function updateEmployee() {
     db.updateEmployee2().then(([rows]) => { let roles = rows })
 
     console.log(roles)
+}
+
+function quit() {
+    console.log("bye")
+    process.exit()
 }
 
 
