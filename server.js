@@ -204,9 +204,24 @@ function addEmployee() {
 }
 
 function updateEmployee() {
-    db.updateEmployee2().then(([rows]) => { let roles = rows })
+    db.viewEmployees2().then(([rows]) => {
+        let employees = rows;
+        let choicesEmployees = employees.map(({id, first_name})=>({
+            name: first_name, value: id
+        }))
+
+        inquirer.prompt(
+        {
+            name: "employeeID",
+            type: "list",
+            message: "Please input employee",
+            choices: choicesEmployees 
+    
+        },
+        )
 
     console.log(roles)
+    })
 }
 
 function quit() {

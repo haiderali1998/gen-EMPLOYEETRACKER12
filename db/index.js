@@ -22,8 +22,8 @@ class DB {
     addEmployee2(inputEmployee){
         return this.connection.promise().query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${inputEmployee.first}", "${inputEmployee.last}", ${inputEmployee.roleID}, ${inputEmployee.managerID})`);
     }
-    updateEmployee2(){
-        return this.connection.promise().query("SELECT department.id, department.name FROM department");
+    updateEmployee2(employeeID, roleID){
+        return this.connection.promise().query(`UPDATE employee, SET role_id = ${roleID} WHERE id = ${employeeID}`);
     }
 
 }
